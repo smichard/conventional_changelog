@@ -1,0 +1,78 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: conventional-changelog
+spec:
+  workspaces:
+  - name: shared-workspace
+  - name: registry-credentials
+  params:
+  - name: git-url
+    type: string
+    description: "Url of the git repo for the code of deployment"
+  - name: git-revision
+    type: string
+    description: "Revision to be used from repo of the code for deployment"
+    default: main
+  - name: target-image
+    type: string
+    description: "Image to be build from the code and push to external registry"
+  - name: message
+    type: string
+    description: "The message to send to the Matrix room"
+  - name: notification-secret
+    type: string
+    description: "Secret containing the Matrix credentials"
+    default: "matrix-secret"
+  tasks:
+  - name: fetch-repository
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    workspaces:
+    - name: output
+      workspace: shared-workspace
+    params:
+    - name: url
+      value: $(params.git-url)
+    - name: subdirectory
+      value: ""
+    - name: deleteExisting
+      value: "true"
+    - name: revision
+      value: $(params.git-revision)
+  - name: get-git-tag
+    taskRef:
+      name: get-git-tag
+    workspaces:
+    - name: source
+      workspace: shared-workspace
+    runAfter:
+    - fetch-repository
+  - name: build-image-external
+    retries: 3
+    taskRef:
+      name: buildah
+      kind: ClusterTask
+    params:
+    - name: IMAGE
+      value: $(params.target-image):$(tasks.get-git-tag.results.build-tag)
+    - name: DOCKERFILE
+      value: "./Containerfile"
+    workspaces:
+    - name: source
+      workspace: shared-workspace
+    - name: dockerconfig
+      workspace: registry-credentials
+    runAfter:
+    - get-git-tag
+  - name: notification
+    taskRef:
+      name: notification-to-matrix
+    params:
+    - name: message
+      value: $(params.target-image) $(params.message) $(tasks.get-git-tag.results.build-tag)
+    - name: notification-secret
+      value: $(params.notification-secret)
+    runAfter:
+      - build-image-external
