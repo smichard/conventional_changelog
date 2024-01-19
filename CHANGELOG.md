@@ -5,12 +5,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
-## 0.1.3 (2024-01-19)
-
 ## 0.1.2 (2024-01-19)
 
 ### Bug Fixes
 - :bug: matrix notification fixed [`a0a0bf0`](https://github.com/smichard/cities_demo/commit/a0a0bf0)
+
+### Continuous Integration
+- :robot: Merge pull request renovate bot #6 from smichard/renovate/quay.io-michard-tekton_base_image-0.x [`972e29c`](https://github.com/smichard/cities_demo/commit/972e29c)
+- :robot: Merge pull request renovate bot #5 from smichard/renovate/quay.io-michard-devspaces_base_image-0.x [`29828cc`](https://github.com/smichard/cities_demo/commit/29828cc)
+
+### Documentation
+- :memo: changelog regenerated [`51e36e1`](https://github.com/smichard/cities_demo/commit/51e36e1)
+
+### Chore
+- update quay.io/michard/tekton_base_image docker tag to v0.1.10 [`11c1f2a`](https://github.com/smichard/cities_demo/commit/11c1f2a)
+- update quay.io/michard/devspaces_base_image docker tag to v0.1.2 [`7097dc0`](https://github.com/smichard/cities_demo/commit/7097dc0)
 
 ## 0.1.1 (2024-01-19)
 
