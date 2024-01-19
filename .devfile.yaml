@@ -1,0 +1,52 @@
+schemaVersion: "2.2.0"
+metadata:
+  name: conventional-changelog
+  namespace: smichard-devspaces
+  attributes:
+    metadata-name-field: generateName
+    metadata-name-original-value: conventional_changelog
+attributes:
+  che-theia.eclipse.org/sidecar-policy: mergeImage
+  controller.devfile.io/devworkspace-config:
+    name: devworkspace-config
+    namespace: openshift-operators
+  controller.devfile.io/scc: container-build
+  controller.devfile.io/storage-type: per-user
+  dw.metadata.annotations:
+    che.eclipse.org/devfile-source: |
+      url:
+        location: <git repository url> #change-me
+      factory:
+        params: url=<git repository url> #change-me
+projects:
+  - name: conventional-changelog
+    git:
+      remotes:
+        origin: https://github.com/smichard/conventional_changelog
+components:
+  - name: devspaces-container
+    container:
+      image: quay.io/michard/devspaces_base_image:0.1.1
+      sourceMapping: /projects
+      env:
+        - name: CHE_DASHBOARD_URL
+          value: https://devspaces.apps.ocp.michard.cc
+        - name: CHE_PLUGIN_REGISTRY_URL
+          value: https://devspaces.apps.ocp.michard.cc/plugin-registry/v3
+        - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
+          value: http://plugin-registry.openshift-operators.svc:8080/v3
+        - name: CLUSTER_CONSOLE_URL
+          value: https://console-openshift-console.apps.ocp.michard.cc
+        - name: CLUSTER_CONSOLE_TITLE
+          value: OpenShift console
+        - name: OPENVSX_REGISTRY_URL
+          value: 'https://open-vsx.org/'
+commands:
+  - id: post-start-cmd
+    exec:
+      label: 'Post Start Commands'
+      component: devspaces-container
+      commandLine: git config --global pull.rebase true
+events:
+  postStart:
+    - post-start-cmd
