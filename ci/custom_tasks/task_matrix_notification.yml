@@ -1,0 +1,43 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: notification-to-matrix
+  labels:
+    app.kubernetes.io/version: "0.1"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.12.1"
+    tekton.dev/categories: Messaging
+    tekton.dev/tags: messaging
+    tekton.dev/platforms: "linux/amd64"
+spec:
+  description: >-
+    This task posts a simple message to a matrix room using Matrix's Client-Server REST API.
+  params:
+  - name: message
+    type: string
+    description: plain text message
+  - name: notification-secret
+    type: string
+    default: "matrix-secret"
+  steps:
+  - name: post
+    image: quay.io/michard/tekton_base_image:0.1.2
+    script: |
+      #!/bin/sh
+      curl -X POST -H 'Content-type: application/json' --data '{"msgtype":"m.text", "body":"$(params.message)"}' https://$ENDPOINT/_matrix/client/r0/rooms/$ROOM/send/m.room.message?access_token=$TOKEN
+    env:
+    - name: TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: $(params.notification-secret)
+          key: matrix-token
+    - name: ENDPOINT
+      valueFrom:
+        secretKeyRef:
+          name: $(params.notification-secret)
+          key: matrix-endpoint
+    - name: ROOM
+      valueFrom:
+        secretKeyRef:
+          name: $(params.notification-secret)
+          key: matrix-room
