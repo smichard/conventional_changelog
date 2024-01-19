@@ -1,0 +1,23 @@
+name: on-commit
+on:
+  push:
+    paths:
+      - 'README.md'
+jobs:
+  notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: notification
+        uses: s3krit/matrix-message-action@v0.0.3
+        with:
+          room_id: ${{ secrets.MATRIX_ROOM_ID }}
+          access_token: ${{ secrets.MATRIX_ACCESS_TOKEN }}
+          server: ${{ secrets.MATRIX_SERVER }}
+          message: |
+            "${{ github.repository }}": changes to source directory detected<br />
+            **Tekton pipeline triggered**<br />
+            commit message: **${{ github.event.head_commit.message }}** <br />
+            contributor: **${{ github.actor }}** <br />
+            commit sha: **${{ github.sha }}** <br />
+            commit history: **[link](https://github.com/${{ github.repository }}/commits/main)** <br />
+            Pipeline: **[link](https://console-openshift-console.apps.ocp.michard.cc/pipelines/ns/build-environment)** <br />
