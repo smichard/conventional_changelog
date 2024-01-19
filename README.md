@@ -13,7 +13,7 @@ podman run -it --rm -v "$(pwd):/repo" quay.io/michard/conventional_changelog sh
 ```
 
 ## Best Practise Guides
-[GitHub Flow](https://githubflow.github.io/)
-[Semantic Versioning](https://semver.org/)
-[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-[Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+[GitHub Flow](https://githubflow.github.io/)  
+[Semantic Versioning](https://semver.org/)  
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)  
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/)  
