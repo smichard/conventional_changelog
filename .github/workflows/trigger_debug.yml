@@ -12,7 +12,7 @@ jobs:
         with:
           room_id: ${{ secrets.MATRIX_ROOM_ID }}
           access_token: ${{ secrets.MATRIX_ACCESS_TOKEN }}
-          server: "https://matrix.web.michard.cc"
+          server: "http://matrix.web.michard.cc"
           message: |
             "${{ github.repository }}": changes to source directory detected<br />
             **Tekton pipeline triggered**<br />
