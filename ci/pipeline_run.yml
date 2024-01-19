@@ -14,7 +14,7 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 20Mi
+            storage: 15Mi
         storageClassName: managed-nfs-storage
         volumeMode: Filesystem
   - name: registry-credentials
@@ -26,7 +26,7 @@ spec:
   - name: git-revision
     value: "main"
   - name: target-image
-    value: "quay.io/repository/michard/conventional_changelog"
+    value: "quay.io/michard/conventional_changelog"
   - name: message
     value: "Conventional Changelog: new image build and pushed to external registry - Build Tag:"
   - name: notification-secret
