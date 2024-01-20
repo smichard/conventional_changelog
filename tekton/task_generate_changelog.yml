@@ -22,9 +22,9 @@ spec:
     type: string
     description: file name of the changelog file
     default: "CHANGELOG.md"
-  - name: repo-url
-    type: string
-    description: "Url of the git repo for the code of deployment"
+  #- name: repo-url
+  #  type: string
+  #  description: "Url of the git repo for the code of deployment"
   steps:
     - name: generate-changelog
       image: quay.io/michard/tekton_base_image:0.1.10
@@ -39,14 +39,17 @@ spec:
         # Path to the Git repository (current directory)
         REPO_DIR="/workspace/source"
         CHANGELOG_FILE="$REPO_DIR/$(params.changelog-file-name)"
-        GITHUB_REPO_URL=$(params.repo-url) # Replace with your repository URL
-
+         
         # save changelog file path to results variable
         echo ${CHANGELOG_FILE} | tr -d "\n" | tee $(results.changelog-file-path.path)
 
         echo "Starting changelog generation script..."
         git config --global --add safe.directory /workspace/source
+        $(git remote get-url origin | sed 's/\.git$//')
         git -C /workspace/source fetch --unshallow
+
+        echo "Repository:"
+        echo $GITHUB_REPO_URL
 
         # Create or clear the changelog file
         echo -n > $CHANGELOG_FILE
