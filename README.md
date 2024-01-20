@@ -9,7 +9,8 @@ description wip
 
 ## run locally
 ```bash
-podman run -it --rm -v "$(pwd):/repo" quay.io/michard/conventional_changelog sh
+podman build -t <image-name> -f Containerfile
+podman run -it --rm -v "$(pwd):/repo" <image-name> sh
 ```
 
 ## Best Practise Guides
@@ -17,3 +18,4 @@ podman run -it --rm -v "$(pwd):/repo" quay.io/michard/conventional_changelog sh
 [Semantic Versioning](https://semver.org/)  
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)  
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)  
+[Open GitOps](https://opengitops.dev/)
