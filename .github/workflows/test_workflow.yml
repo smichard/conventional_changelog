@@ -19,6 +19,11 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set Git User Info
+      run: |
+        git config user.name 'GitHub Actions Bot'
+        git config user.email 'actions@github.com'
+
     - name: Commit Changelog
       run: |
         git add CHANGELOG.md
