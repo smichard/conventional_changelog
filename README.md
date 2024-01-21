@@ -11,7 +11,13 @@ description wip
 ```bash
 podman build -t <image-name> -f Containerfile
 podman run -it --rm -v "$(pwd):/repo" <image-name> sh
+cd repo
+./generate_changelog.sh
 ```
+
+## run with GitHub Action
+
+## run within a tekton pipeline
 
 ## Best Practise Guides
 [GitHub Flow](https://githubflow.github.io/)  
