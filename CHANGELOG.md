@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - :bug: adjusted workflow [`075371c`](/commit/075371c)
 
 ### Test
+- :tada: final test of custom github action [`167f270`](/commit/167f270)
 - :construction: testing lastest workflow changes [`9de2296`](/commit/9de2296)
 - :construction: testing unshallow fetch [`2a7671f`](/commit/2a7671f)
 - :construction: testing latest workflow changes [`8baa5fb`](/commit/8baa5fb)
@@ -35,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - :art: name of workflow adjusted [`449e865`](/commit/449e865)
 
 ### Other
+- documentaion: :robot: changelog file generated [`3e4a166`](/commit/3e4a166)
 - Update CHANGELOG.md [`05bb113`](/commit/05bb113)
 - Update CHANGELOG.md [`0b92400`](/commit/0b92400)
 
