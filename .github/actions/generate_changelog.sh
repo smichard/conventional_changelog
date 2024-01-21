@@ -115,3 +115,5 @@ for TAG in $TAGS; do
 done
 
 echo "Changelog generation complete."
+echo "Content of the Changelog file:"
+cat CHANGELOG.md
