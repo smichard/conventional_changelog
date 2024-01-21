@@ -10,10 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - :construction: testing action [`454e849`](/commit/454e849)
 
 ### Bug Fixes
+- :bug: commit message adjusted [`cb40c9c`](/commit/cb40c9c)
 - :bug: getting all commits for latest tag [`bb464ce`](/commit/bb464ce)
 - :bug: adjusted workflow [`075371c`](/commit/075371c)
 
 ### Test
+- :construction: testing latest update to commit message [`ee6a42e`](/commit/ee6a42e)
 - :tada: final test of custom github action [`167f270`](/commit/167f270)
 - :construction: testing lastest workflow changes [`9de2296`](/commit/9de2296)
 - :construction: testing unshallow fetch [`2a7671f`](/commit/2a7671f)
@@ -36,6 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - :art: name of workflow adjusted [`449e865`](/commit/449e865)
 
 ### Other
+- documentaion: :robot: changelog file generated [`9688546`](/commit/9688546)
 - documentaion: :robot: changelog file generated [`3e4a166`](/commit/3e4a166)
 - Update CHANGELOG.md [`05bb113`](/commit/05bb113)
 - Update CHANGELOG.md [`0b92400`](/commit/0b92400)
