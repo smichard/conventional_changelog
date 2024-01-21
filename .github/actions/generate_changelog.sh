@@ -13,6 +13,7 @@ GITHUB_REPO_URL=$(git remote get-url origin | sed 's/\.git$//') # get repository
 
 echo "Starting changelog generation script..."
 git config --global --add safe.directory /github/workspace
+git -C /github/workspace fetch --unshallow
 echo "Repository:"
 echo $GITHUB_REPO_URL
 # Create or clear the changelog file
