@@ -1,0 +1,15 @@
+name: 'Conventional Changelog'
+description: 'Generates a changelog for your project based on git history. Classification based on Conventional Commits.'
+branding:
+  icon: list
+  color: blue
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub token'
+    required: true
+outputs:
+  changelog:
+    description: 'The generated changelog in makrdown format'
+runs:
+  using: 'docker'
+  image: 'Dockerfile:Containerfile'

@@ -1,0 +1,27 @@
+name: Generate Changelog
+
+on:
+  push:
+    paths:
+      - 'README.md'
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    name: Generate and Commit Changelog
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Generate Changelog
+      uses: ./.github/actions/your-action
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Commit Changelog
+      run: |
+        git add CHANGELOG.md
+        git commit -m "Update CHANGELOG.md" || echo "No changes to commit"
+        git push
+
