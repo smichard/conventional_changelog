@@ -12,6 +12,7 @@ CHANGELOG_FILE="$REPO_DIR/CHANGELOG.md"
 GITHUB_REPO_URL=$(git remote get-url origin | sed 's/\.git$//') # get repository url from git remote
 
 echo "Starting changelog generation script..."
+git config --global --add safe.directory /github/workspace
 echo "Repository:"
 echo $GITHUB_REPO_URL
 # Create or clear the changelog file
