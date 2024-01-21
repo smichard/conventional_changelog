@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Generate Changelog
-      uses: ./.github/actions/your-action
+      uses: ./.github/actions
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
