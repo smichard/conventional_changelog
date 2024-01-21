@@ -25,3 +25,4 @@ cd repo
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)  
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)  
 [Open GitOps](https://opengitops.dev/)
+
