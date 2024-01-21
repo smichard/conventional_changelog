@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - :bug: adjusted workflow [`075371c`](/commit/075371c)
 
 ### Test
+- :construction: testing lastest workflow changes [`9de2296`](/commit/9de2296)
 - :construction: testing unshallow fetch [`2a7671f`](/commit/2a7671f)
 - :construction: testing latest workflow changes [`8baa5fb`](/commit/8baa5fb)
 - :construction: testing custom action [`9661ac6`](/commit/9661ac6)
@@ -30,9 +31,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - update actions/checkout action to v4 [`fe6154a`](/commit/fe6154a)
 
 ### Style
+- :art: commit message adjusted to conventional commits structure [`6de8075`](/commit/6de8075)
 - :art: name of workflow adjusted [`449e865`](/commit/449e865)
 
 ### Other
+- Update CHANGELOG.md [`05bb113`](/commit/05bb113)
 - Update CHANGELOG.md [`0b92400`](/commit/0b92400)
 
 ## 0.1.4 (2024-01-19)
