@@ -14,7 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - :bug: getting all commits for latest tag [`bb464ce`](/commit/bb464ce)
 - :bug: adjusted workflow [`075371c`](/commit/075371c)
 
+### Documentation
+- :robot: changelog file generated [`3712d06`](/commit/3712d06)
+
 ### Test
+- :tada: github action + workflow finalized [`286067e`](/commit/286067e)
 - :construction: testing latest update to commit message [`ee6a42e`](/commit/ee6a42e)
 - :tada: final test of custom github action [`167f270`](/commit/167f270)
 - :construction: testing lastest workflow changes [`9de2296`](/commit/9de2296)
