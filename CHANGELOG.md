@@ -6,8 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## 0.1.5 (2024-01-21)
 
+### Feature
+- :construction: testing action [`454e849`](/commit/454e849)
+
+### Bug Fixes
+- :bug: getting all commits for latest tag [`bb464ce`](/commit/bb464ce)
+- :bug: adjusted workflow [`075371c`](/commit/075371c)
+
 ### Test
+- :construction: testing unshallow fetch [`2a7671f`](/commit/2a7671f)
 - :construction: testing latest workflow changes [`8baa5fb`](/commit/8baa5fb)
+- :construction: testing custom action [`9661ac6`](/commit/9661ac6)
+- :construction: testing [`7c73338`](/commit/7c73338)
+- :construction: testing [`05f5b79`](/commit/05f5b79)
+- :construction: testing custom action [`4c256b1`](/commit/4c256b1)
+- :construction: testing custom action [`c87e4eb`](/commit/c87e4eb)
+- :construction: testing action [`1b46652`](/commit/1b46652)
+
+### Build
+- :robot: Merge pull request #7 from smichard/renovate/actions-checkout-4.x [`a2137c3`](/commit/a2137c3)
+
+### Chore
+- update actions/checkout action to v4 [`fe6154a`](/commit/fe6154a)
+
+### Style
+- :art: name of workflow adjusted [`449e865`](/commit/449e865)
+
+### Other
+- Update CHANGELOG.md [`0b92400`](/commit/0b92400)
 
 ## 0.1.4 (2024-01-19)
 
