@@ -34,7 +34,7 @@ git fetch --tags
 echo "Fetched latest tags."
 
 # Get the latest tag
-LATEST_TAG=$(git describe --tags --abbrev=0)
+LATEST_TAG=$(git describe --tags --abbrev=0 --always)
 
 # Get tags in reverse order
 TAGS=$(git tag --sort=-v:refname)
