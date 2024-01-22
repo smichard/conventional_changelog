@@ -1,4 +1,4 @@
-name: 'Conventional Changelog'
+name: 'Generate Changelog based on Convetional Commits'
 description: 'Generates a changelog for your project based on git history. Classification based on Conventional Commits.'
 branding:
   icon: list
@@ -9,7 +9,7 @@ inputs:
     required: true
 outputs:
   changelog:
-    description: 'The generated changelog in makrdown format'
+    description: 'A generated changelog file in makrdown format'
 runs:
   using: 'docker'
   image: 'Dockerfile'
