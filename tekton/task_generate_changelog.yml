@@ -43,13 +43,9 @@ spec:
         # save changelog file path to results variable
         echo ${CHANGELOG_FILE} | tr -d "\n" | tee $(results.changelog-file-path.path)
 
-        echo "Starting changelog generation script..."
+        echo -e "\nStarting changelog generation script..."
         git config --global --add safe.directory /workspace/source
-        $(git remote get-url origin | sed 's/\.git$//')
         git -C /workspace/source fetch --unshallow
-
-        echo "Repository:"
-        echo $GITHUB_REPO_URL
 
         # Create or clear the changelog file
         echo -n > $CHANGELOG_FILE
@@ -64,6 +60,11 @@ spec:
 
         # Go to the repository directory
         cd $REPO_DIR
+
+        # Get repository url
+        GITHUB_REPO_URL=$(git remote get-url origin | sed 's/\.git$//')
+        echo "Repository:"
+        echo $GITHUB_REPO_URL
 
         # Fetch the latest changes
         git fetch --tags
