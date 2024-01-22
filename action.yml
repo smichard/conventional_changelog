@@ -12,4 +12,4 @@ outputs:
     description: 'The generated changelog in makrdown format'
 runs:
   using: 'docker'
-  image: 'Dockerfile:Containerfile'
+  image: 'Dockerfile'
