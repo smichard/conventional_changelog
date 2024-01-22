@@ -4,17 +4,36 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 0.1.7 (2024-01-22)
+
+### Test
+- :construction: testing workflow [`0a3aaa0`](/commit/0a3aaa0)
+- :construction: testing workflow ahead of publishing [`f386503`](/commit/f386503)
+- :construction: testing workflow [`d98fb60`](/commit/d98fb60)
+
+### Other
+- testing workflow [`7c773a6`](/commit/7c773a6)
+
+## 0.1.6 (2024-01-22)
+
+### Test
+- :construction: testing pipeline trigger [`2135a72`](/commit/2135a72)
+
 ## 0.1.5 (2024-01-21)
 
 ### Feature
+- :sparkles: Tekton task optimized [`0c1361e`](/commit/0c1361e)
+- :sparkles: Tekton Task optimized [`316f5c9`](/commit/316f5c9)
 - :construction: testing action [`454e849`](/commit/454e849)
 
 ### Bug Fixes
+- :construction: use of Dockerfile instead of Containerfile for simplicity [`a0af9b2`](/commit/a0af9b2)
 - :bug: commit message adjusted [`cb40c9c`](/commit/cb40c9c)
 - :bug: getting all commits for latest tag [`bb464ce`](/commit/bb464ce)
 - :bug: adjusted workflow [`075371c`](/commit/075371c)
 
 ### Documentation
+- :robot: changelog file generated [`3261970`](/commit/3261970)
 - :robot: changelog file generated [`3712d06`](/commit/3712d06)
 
 ### Test
@@ -40,6 +59,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Style
 - :art: commit message adjusted to conventional commits structure [`6de8075`](/commit/6de8075)
 - :art: name of workflow adjusted [`449e865`](/commit/449e865)
+
+### Refactor
+- :construction: files to generate changelog split for environment [`ad9f9d8`](/commit/ad9f9d8)
+- :construction: Containerfile renamed to Dockerfile [`2113c43`](/commit/2113c43)
 
 ### Other
 - documentaion: :robot: changelog file generated [`9688546`](/commit/9688546)
