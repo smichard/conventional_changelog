@@ -12,7 +12,7 @@ description wip
 podman build -t <image-name> -f Containerfile
 podman run -it --rm -v "$(pwd):/repo" <image-name> sh
 cd repo
-./generate_changelog.sh
+./generate_changelog_local.sh
 ```
 
 ## run with GitHub Action
