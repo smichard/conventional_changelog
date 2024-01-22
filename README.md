@@ -101,68 +101,68 @@ Conventional Changelog extends its versatility by offering seamless integration 
 	oc apply -f tekton/task_generate_changelog.yml
 	```
 2. Integrate the provided task into a CI/CD pipeline. Find below a minimal pipeline configuration. This pipeline illustrates a minimal configuration which retrieves a Git repository and generates the changelog. However, the provided pipeline can serve as a blueprint to be adopted in a larger context. If the generated changelog file needs to be committed back to the repository, additional steps are required to handle the commit process.
-	```yaml
-	apiVersion: tekton.dev/v1beta1
-	kind: Pipeline
-	metadata:
-	name: minimal-pipeline
-	spec:
+```yaml
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+name: minimal-pipeline
+spec:
+workspaces:
+- name: source
+params:
+- name: git-url
+	type: string
+	description: "URL of the git repository"
+tasks:
+- name: fetch-repository
+	taskRef:
+	name: git-clone
+	kind: ClusterTask
+	workspaces:
+	- name: output
+	workspace: source
+	params:
+	- name: url
+	value: $(params.git-url)
+	- name: revision
+	value: "main"
+- name: generate-changelog
+	taskRef:
+	name: generate-changelog
 	workspaces:
 	- name: source
-	params:
-	- name: git-url
-		type: string
-		description: "URL of the git repository"
-	tasks:
-	- name: fetch-repository
-		taskRef:
-		name: git-clone
-		kind: ClusterTask
-		workspaces:
-		- name: output
-		workspace: source
-		params:
-		- name: url
-		value: $(params.git-url)
-		- name: revision
-		value: "main"
-	- name: generate-changelog
-		taskRef:
-		name: generate-changelog
-		workspaces:
-		- name: source
-		workspace: source
-		runAfter:
-		- fetch-repository
-	```
+	workspace: source
+	runAfter:
+	- fetch-repository
+```
 3. Apply the pipeline:
 	```bash
 	oc apply -f tekton/pipeline.yml
 	```
 4. Adopt the provided `PipelineRun` file according to your projects needs. Particularly adjust the repository url to match the specific project and the storage requirements before triggering the pipeline:
-	```yaml
-	apiVersion: tekton.dev/v1beta1
-	kind: PipelineRun
-	metadata:
-	generateName: minimal-pipeline-run-
+```yaml
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+generateName: minimal-pipeline-run-
+spec:
+pipelineRef:
+	name: minimal-pipeline
+params:
+- name: git-url
+	value: "https://github.com/your-repo-url"   # adjust GitHub repository url
+workspaces:
+- name: source
+	volumeClaimTemplate:
 	spec:
-	pipelineRef:
-		name: minimal-pipeline
-	params:
-	- name: git-url
-		value: "https://github.com/your-repo-url"   # adjust GitHub repository url
-	workspaces:
-	- name: source
-		volumeClaimTemplate:
-		spec:
-			accessModes:
-			- ReadWriteOnce
-			resources:
-			requests:
-				storage: 50Mi                       # adjust to the storage requirements
-			storageClassName: managed-nfs-storage
-			volumeMode: Filesystem
-	```
+		accessModes:
+		- ReadWriteOnce
+		resources:
+		requests:
+			storage: 50Mi                       # adjust to the storage requirements
+		storageClassName: managed-nfs-storage
+		volumeMode: Filesystem
+```
 5. Trigger the pipeline:
 	```bash
 	oc create -f tekton/pipeline_run.yml
