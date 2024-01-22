@@ -4,12 +4,35 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 1.0.0 (2024-01-22)
+
 ## 0.1.7 (2024-01-22)
+
+### Feature
+- :sparkles: github action adjusted [`69f9fab`](/commit/69f9fab)
+- :sparkles: workflow extended [`fff63b1`](/commit/fff63b1)
+
+### Bug Fixes
+- :bug: github workflow adjusted [`e0b1db3`](/commit/e0b1db3)
+
+### Documentation
+- :memo: ReadMe adjusted [`9bdfa82`](/commit/9bdfa82)
+- :memo: adjusted indentation [`0c1cd35`](/commit/0c1cd35)
+- :memo: documentation finalized #major [`02ef139`](/commit/02ef139)
+- :memo: metadata of tekton task adjusted [`6d2164d`](/commit/6d2164d)
+- :robot: changelog file generated [`4964ba3`](/commit/4964ba3)
 
 ### Test
 - :construction: testing workflow [`0a3aaa0`](/commit/0a3aaa0)
 - :construction: testing workflow ahead of publishing [`f386503`](/commit/f386503)
 - :construction: testing workflow [`d98fb60`](/commit/d98fb60)
+
+### Build
+- :sparkles: github action workflow adjusted [`188d2be`](/commit/188d2be)
+- :sparkles: exemplary minimal pipeline and pipeline run files added [`93c9b13`](/commit/93c9b13)
+
+### Refactor
+- :fire: removed files for local testing [`375cae0`](/commit/375cae0)
 
 ### Other
 - testing workflow [`7c773a6`](/commit/7c773a6)
