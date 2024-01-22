@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'Dockerfile'
+      - 'action.yml'
+      - 'generate_changelog_gh.sh'
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
