@@ -22,9 +22,6 @@ spec:
     type: string
     description: file name of the changelog file
     default: "CHANGELOG.md"
-  #- name: repo-url
-  #  type: string
-  #  description: "Url of the git repo for the code of deployment"
   steps:
     - name: generate-changelog
       image: quay.io/michard/tekton_base_image:0.1.10
