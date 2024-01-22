@@ -15,7 +15,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Generate Changelog
-      uses: ./.github/actions
+      #uses: ./.github/actions
+      uses: smichard/conventional_changelog@v0.1.7
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -29,4 +30,3 @@ jobs:
         git add CHANGELOG.md
         git commit -m "docs: :robot: changelog file generated" || echo "No changes to commit"
         git push
-
