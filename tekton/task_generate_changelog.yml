@@ -6,8 +6,8 @@ metadata:
     app.kubernetes.io/version: "0.1"
   annotations:
     tekton.dev/pipelines.minVersion: "0.12.1"
-    tekton.dev/categories: Build Tools
-    tekton.dev/tags: build-tool
+    tekton.dev/categories: Publishing
+    tekton.dev/tags: documentation
     tekton.dev/platforms: "linux/amd64"
 spec:
   description: >-
