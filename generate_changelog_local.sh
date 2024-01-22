@@ -15,7 +15,7 @@ echo "Starting changelog generation script..."
 echo "Repository:"
 echo $GITHUB_REPO_URL
 # Create or clear the changelog file
-echo -n > $CHANGELOG_FILE
+> $CHANGELOG_FILE
 
 # Add the introductory text to the changelog
 echo "# Changelog" >> $CHANGELOG_FILE
@@ -63,7 +63,7 @@ for TAG in $TAGS; do
     echo "" >> $CHANGELOG_FILE
 
     # Collect all commits for this tag range
-    ALL_COMMITS=$(git log $TAG..$PREV_TAG --oneline)
+    ALL_COMMITS=$(git log $TAG..$PREV_TAG --oneline --always)
 
     # Process each category
     for KEY in $CATEGORIES; do
