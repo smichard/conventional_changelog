@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 1.0.1 (2024-01-22)
+
 ## 1.0.0 (2024-01-22)
+
+### Documentation
+- :robot: changelog file generated [`a9fbb98`](/commit/a9fbb98)
+
+### Build
+- :art: action renamed [`a297c91`](/commit/a297c91)
 
 ## 0.1.7 (2024-01-22)
 
