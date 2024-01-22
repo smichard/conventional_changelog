@@ -1,4 +1,4 @@
-name: 'Generate Changelog based on Convetional Commits'
+name: 'Generate Changelog based on Conventional Commits'
 description: 'Generates a changelog for your project based on git history. Classification based on Conventional Commits.'
 branding:
   icon: list
