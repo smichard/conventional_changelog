@@ -6,11 +6,11 @@ RUN apk update \
     && rm -rf /var/cache/apk/*
 
 # Copy script into the container
-COPY generate_changelog.sh /generate_changelog.sh
+COPY generate_changelog_gh.sh /generate_changelog_gh.sh
 
 # Make script executable
-RUN chmod +x /generate_changelog.sh
+RUN chmod +x /generate_changelog_gh.sh
 
 # Set the entrypoint to the shell and default command to your script
 ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["/generate_changelog.sh"]
+CMD ["/generate_changelog_gh.sh"]

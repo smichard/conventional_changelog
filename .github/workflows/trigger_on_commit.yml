@@ -2,7 +2,7 @@ name: on-commit
 on:
   push:
     paths:
-      - 'Containerfile'
+      - 'Dockerfile'
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
