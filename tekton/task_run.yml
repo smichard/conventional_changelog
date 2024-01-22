@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  generateName: generate-changelog-run-
+spec:
+  taskRef:
+    name: generate-changelog
+  workspaces:
+  - name: source
+    persistentVolumeClaim:
+      claimName: source-pvc
+  params:
+  - name: changelog-file-name
+    value: "CHANGELOG.md"

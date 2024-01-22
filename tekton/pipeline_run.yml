@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: minimal-pipeline-run-
+spec:
+  pipelineRef:
+    name: minimal-pipeline
+  params:
+  - name: git-url
+    value: "https://github.com/your-repo-url"   # adjust GitHub repository url
+  workspaces:
+  - name: source
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 50Mi                       # adjust to the storage requirements
+        storageClassName: managed-nfs-storage
+        volumeMode: Filesystem

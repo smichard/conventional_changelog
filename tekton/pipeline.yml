@@ -1,0 +1,32 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: minimal-pipeline
+spec:
+  workspaces:
+  - name: source
+  params:
+  - name: git-url
+    type: string
+    description: "URL of the git repository"
+  tasks:
+  - name: fetch-repository
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    workspaces:
+    - name: output
+      workspace: source
+    params:
+    - name: url
+      value: $(params.git-url)
+    - name: revision
+      value: "main"
+  - name: generate-changelog
+    taskRef:
+      name: generate-changelog
+    workspaces:
+    - name: source
+      workspace: source
+    runAfter:
+    - fetch-repository
