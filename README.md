@@ -105,35 +105,35 @@ Conventional Changelog extends its versatility by offering seamless integration 
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-name: minimal-pipeline
+	name: minimal-pipeline
 spec:
-workspaces:
-- name: source
-params:
-- name: git-url
-	type: string
-	description: "URL of the git repository"
-tasks:
-- name: fetch-repository
-	taskRef:
-	name: git-clone
-	kind: ClusterTask
-	workspaces:
-	- name: output
-	workspace: source
-	params:
-	- name: url
-	value: $(params.git-url)
-	- name: revision
-	value: "main"
-- name: generate-changelog
-	taskRef:
-	name: generate-changelog
 	workspaces:
 	- name: source
-	workspace: source
-	runAfter:
-	- fetch-repository
+	params:
+	- name: git-url
+	  type: string
+	  description: "URL of the git repository"
+	tasks:
+	- name: fetch-repository
+	  taskRef:
+		name: git-clone
+		kind: ClusterTask
+	  workspaces:
+	  - name: output
+		workspace: source
+	  params:
+	  - name: url
+		value: $(params.git-url)
+	  - name: revision
+		value: "main"
+	- name: generate-changelog
+	  taskRef:
+		name: generate-changelog
+	  workspaces:
+	  - name: source
+		workspace: source
+	  runAfter:
+	  - fetch-repository
 ```
 3. Apply the pipeline:
 	```bash
@@ -144,24 +144,24 @@ tasks:
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-generateName: minimal-pipeline-run-
+	generateName: minimal-pipeline-run-
 spec:
-pipelineRef:
-	name: minimal-pipeline
-params:
-- name: git-url
-	value: "https://github.com/your-repo-url"   # adjust GitHub repository url
-workspaces:
-- name: source
-	volumeClaimTemplate:
-	spec:
-		accessModes:
-		- ReadWriteOnce
-		resources:
-		requests:
-			storage: 50Mi                       # adjust to the storage requirements
-		storageClassName: managed-nfs-storage
-		volumeMode: Filesystem
+	pipelineRef:
+	  name: minimal-pipeline
+	params:
+	- name: git-url
+	  value: "https://github.com/your-repo-url"   # adjust GitHub repository url
+	workspaces:
+	- name: source
+	  volumeClaimTemplate:
+	    spec:
+		  accessModes:
+		    - ReadWriteOnce
+		  resources:
+		    requests:
+			  storage: 50Mi                       # adjust to the storage requirements
+		  storageClassName: managed-nfs-storage
+		  volumeMode: Filesystem
 ```
 5. Trigger the pipeline:
 	```bash
