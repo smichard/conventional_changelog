@@ -3,7 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   changelog:
-    needs: trigger_tekton_webhook
     runs-on: ubuntu-latest
     name: Generate and Commit Changelog
 
