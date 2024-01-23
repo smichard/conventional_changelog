@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## 1.0.2 (2024-01-22)
 
+### Feature
+- :sparkles: GitHub action added [`3da08cb`](/commit/3da08cb)
+
+### Bug Fixes
+- :bug: github action adjusted [`a832b97`](/commit/a832b97)
+- :bug: github action renamed [`165fa5c`](/commit/165fa5c)
+
+### Continuous Integration
+- :robot: merge pull request #10 from smichard/renovate/smichard-conventional_changelog-1.x [`a39f061`](/commit/a39f061)
+
+### Documentation
+- :memo: ReadMe updated [`cf3ed17`](/commit/cf3ed17)
+- :memo: ReadMe adjusted to use latest version [`329b9d8`](/commit/329b9d8)
+- :robot: changelog file generated [`7cea983`](/commit/7cea983)
+
+### Chore
+- update smichard/conventional_changelog action to v1.0.2 [`8186a63`](/commit/8186a63)
+
 ## 1.0.1 (2024-01-22)
 
 ### Bug Fixes
