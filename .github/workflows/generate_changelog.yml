@@ -1,4 +1,4 @@
-name: on-commit
+name: generate-changelog
 on:
   workflow_dispatch:
 jobs:
