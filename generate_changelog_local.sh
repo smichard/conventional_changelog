@@ -9,7 +9,10 @@ trap 'echo "An error occurred at line $LINENO. Exiting."' ERR
 # Path to the Git repository (current directory)
 REPO_DIR="."
 CHANGELOG_FILE="$REPO_DIR/CHANGELOG.md"
-GITHUB_REPO_URL=$(git remote get-url origin | sed 's/\.git$//') # get repository url from git remote
+GITHUB_REPO_URL=$(git remote get-url origin 2>/dev/null | sed 's/\.git$//')
+if [ -z "$GITHUB_REPO_URL" ]; then
+    GITHUB_REPO_URL=0
+fi
 
 echo "Starting changelog generation script..."
 echo "Repository:"
@@ -89,7 +92,11 @@ for TAG in $TAGS; do
             echo "$CATEGORY_COMMITS" | while read -r COMMIT; do
                 HASH=$(echo $COMMIT | awk '{print $1}')
                 MESSAGE=$(echo $COMMIT | sed -E "s/^$HASH $KEY(\(.*\))?: //")
-                echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+                if [ "$GITHUB_REPO_URL" != "0" ]; then
+                    echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+                else
+                    echo "- $MESSAGE" >> $CHANGELOG_FILE
+                fi
             done
             echo "" >> $CHANGELOG_FILE
         fi
@@ -103,7 +110,11 @@ for TAG in $TAGS; do
         echo "$OTHER_COMMITS" | while read -r COMMIT; do
             HASH=$(echo $COMMIT | awk '{print $1}')
             MESSAGE=$(echo $COMMIT | sed -E 's/^[^ ]* //')
-            echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+            if [ "$GITHUB_REPO_URL" != "0" ]; then
+                echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+            else
+                echo "- $MESSAGE" >> $CHANGELOG_FILE
+            fi
         done
         echo "" >> $CHANGELOG_FILE
     fi
