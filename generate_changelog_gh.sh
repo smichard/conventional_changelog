@@ -13,8 +13,7 @@ CHANGELOG_FILE="$REPO_DIR/CHANGELOG.md"
 echo "Starting changelog generation script..."
 git config --global --add safe.directory /github/workspace
 git -C /github/workspace fetch --unshallow
-echo "Repository:"
-echo $GITHUB_REPO_URL
+
 # Create or clear the changelog file
 > $CHANGELOG_FILE
 
@@ -34,6 +33,9 @@ GITHUB_REPO_URL=$(git remote get-url origin 2>/dev/null | sed 's/\.git$//')
 if [ -z "$GITHUB_REPO_URL" ]; then
     GITHUB_REPO_URL=0
 fi
+
+echo "Repository:"
+echo $GITHUB_REPO_URL
 
 # Fetch the latest changes
 git fetch --tags
