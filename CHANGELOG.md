@@ -4,12 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 1.0.3 (2024-01-25)
+
 ## 1.0.2 (2024-01-22)
 
 ### Feature
+- :sparkles: check introduced [`9fe2ca6`](/commit/9fe2ca6)
 - :sparkles: GitHub action added [`3da08cb`](/commit/3da08cb)
 
 ### Bug Fixes
+- :bug: tekton script adjusted [`773d201`](/commit/773d201)
+- :bug: github script adjusted [`38f66dd`](/commit/38f66dd)
+- :bug: local script adjusted [`579e2ab`](/commit/579e2ab)
 - :bug: github action adjusted [`a832b97`](/commit/a832b97)
 - :bug: github action renamed [`165fa5c`](/commit/165fa5c)
 
@@ -17,6 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - :robot: merge pull request #10 from smichard/renovate/smichard-conventional_changelog-1.x [`a39f061`](/commit/a39f061)
 
 ### Documentation
+- :memo: ReadMe adjusted for indentation within code blocks [`af479b1`](/commit/af479b1)
+- :memo: ReadMe indentation of code blocks adjusted [`6dafab5`](/commit/6dafab5)
+- :robot: changelog file generated [`fb5d4f4`](/commit/fb5d4f4)
 - :memo: ReadMe updated [`cf3ed17`](/commit/cf3ed17)
 - :memo: ReadMe adjusted to use latest version [`329b9d8`](/commit/329b9d8)
 - :robot: changelog file generated [`7cea983`](/commit/7cea983)
