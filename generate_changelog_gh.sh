@@ -9,7 +9,10 @@ trap 'echo "An error occurred at line $LINENO. Exiting."' ERR
 # Path to the Git repository (current directory)
 REPO_DIR="."
 CHANGELOG_FILE="$REPO_DIR/CHANGELOG.md"
-GITHUB_REPO_URL=$(git remote get-url origin | sed 's/\.git$//') # get repository url from git remote
+GITHUB_REPO_URL=$(git remote get-url origin 2>/dev/null | sed 's/\.git$//')
+if [ -z "$GITHUB_REPO_URL" ]; then
+    GITHUB_REPO_URL=0
+fi
 
 echo "Starting changelog generation script..."
 git config --global --add safe.directory /github/workspace
@@ -17,7 +20,7 @@ git -C /github/workspace fetch --unshallow
 echo "Repository:"
 echo $GITHUB_REPO_URL
 # Create or clear the changelog file
-echo -n > $CHANGELOG_FILE
+> $CHANGELOG_FILE
 
 # Add the introductory text to the changelog
 echo "# Changelog" >> $CHANGELOG_FILE
@@ -35,7 +38,7 @@ git fetch --tags
 echo "Fetched latest tags."
 
 # Get the latest tag
-LATEST_TAG=$(git describe --tags --abbrev=0 --always)
+LATEST_TAG=$(git describe --tags --abbrev=0)
 
 # Get tags in reverse order
 TAGS=$(git tag --sort=-v:refname)
@@ -49,7 +52,7 @@ fi
 echo "Found tags: $TAGS"
 
 # Placeholder for the previous tag
-PREV_TAG=HEAD
+TAG_TO=HEAD
 
 # Define categories
 CATEGORIES="feat fix ci perf docs gitops deploy test demo build chore style refactor"
@@ -57,15 +60,26 @@ CATEGORIES="feat fix ci perf docs gitops deploy test demo build chore style refa
 # Regular expression for matching conventional commits
 CONVENTIONAL_COMMIT_REGEX="^.* (feat|fix|ci|perf|docs|gitops|deploy|test|demo|build|chore|style|refactor)(\(.*\))?: "
 
-# Iterate over tags
-for TAG in $TAGS; do
-    echo "Processing tag: $TAG"
-    TAG_DATE=$(git log -1 --format=%ai $TAG | cut -d ' ' -f 1)
-    echo "## $TAG ($TAG_DATE)" >> $CHANGELOG_FILE
-    echo "" >> $CHANGELOG_FILE
+print_tag() {
+    echo "Processing tag: $2"
+    TAG_DATE=$(git log -1 --format=%ai $2 | cut -d ' ' -f 1)
+    if [ "$2" = "HEAD" ]; then
+        if [ $(git rev-parse $1) != $(git rev-parse "HEAD") ]; then
+            echo "## Unreleased changes" >> $CHANGELOG_FILE
+            echo "" >> $CHANGELOG_FILE
+        fi
+    else
+        echo "## $2 ($TAG_DATE)" >> $CHANGELOG_FILE
+        echo "" >> $CHANGELOG_FILE
+    fi
+    
 
     # Collect all commits for this tag range
-    ALL_COMMITS=$(git log $TAG..$PREV_TAG --oneline)
+    if [ -z "$1" ]; then
+        ALL_COMMITS=$(git log $2 --oneline --always)
+    else
+        ALL_COMMITS=$(git log $1..$2 --oneline --always)
+    fi
 
     # Process each category
     for KEY in $CATEGORIES; do
@@ -87,11 +101,15 @@ for TAG in $TAGS; do
                 "refactor") CATEGORY_NAME="Refactor" ;;
             esac
             echo "### $CATEGORY_NAME" >> $CHANGELOG_FILE
-            echo "Listing commits for category: $CATEGORY_NAME under tag $TAG"
+            echo "Listing commits for category: $CATEGORY_NAME under tag $2"
             echo "$CATEGORY_COMMITS" | while read -r COMMIT; do
                 HASH=$(echo $COMMIT | awk '{print $1}')
                 MESSAGE=$(echo $COMMIT | sed -E "s/^$HASH $KEY(\(.*\))?: //")
-                echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+                if [ "$GITHUB_REPO_URL" != "0" ]; then
+                    echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+                else
+                    echo "- $MESSAGE" >> $CHANGELOG_FILE
+                fi
             done
             echo "" >> $CHANGELOG_FILE
         fi
@@ -101,19 +119,29 @@ for TAG in $TAGS; do
     OTHER_COMMITS=$(echo "$ALL_COMMITS" | grep -v -E "$CONVENTIONAL_COMMIT_REGEX" || true)
     if [ ! -z "$OTHER_COMMITS" ]; then
         echo "### Other" >> $CHANGELOG_FILE
-        echo "Listing commits for category: Other under tag $TAG"
+        echo "Listing commits for category: Other under tag $2"
         echo "$OTHER_COMMITS" | while read -r COMMIT; do
             HASH=$(echo $COMMIT | awk '{print $1}')
             MESSAGE=$(echo $COMMIT | sed -E 's/^[^ ]* //')
-            echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+            if [ "$GITHUB_REPO_URL" != "0" ]; then
+                echo "- $MESSAGE [\`$HASH\`]($GITHUB_REPO_URL/commit/$HASH)" >> $CHANGELOG_FILE
+            else
+                echo "- $MESSAGE" >> $CHANGELOG_FILE
+            fi
         done
         echo "" >> $CHANGELOG_FILE
     fi
 
-    echo "Completed processing tag: $TAG"
+    echo "Completed processing tag: $2"
     # Update the previous tag
-    PREV_TAG=$TAG
+}
+
+# Iterate over tags
+for TAG_FROM in $TAGS; do
+    print_tag $TAG_FROM $TAG_TO
+    TAG_TO=$TAG_FROM
 done
+print_tag "" $TAG_FROM
 
 echo "Changelog generation complete."
 echo "Content of the Changelog file:"
