@@ -4,12 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
-## Unreleased changes
+## 1.0.4 (2024-01-25)
+
+### Bug Fixes
+- :bug: script adjusted to add links for each commit
 
 ### Continuous Integration
 - :robot: merge pull request #11 from smichard/renovate/smichard-conventional_changelog-1.x
 
 ### Documentation
+- :robot: changelog file generated
 - :robot: changelog file generated
 
 ### Chore
