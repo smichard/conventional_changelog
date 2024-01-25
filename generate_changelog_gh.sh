@@ -9,10 +9,6 @@ trap 'echo "An error occurred at line $LINENO. Exiting."' ERR
 # Path to the Git repository (current directory)
 REPO_DIR="."
 CHANGELOG_FILE="$REPO_DIR/CHANGELOG.md"
-GITHUB_REPO_URL=$(git remote get-url origin 2>/dev/null | sed 's/\.git$//')
-if [ -z "$GITHUB_REPO_URL" ]; then
-    GITHUB_REPO_URL=0
-fi
 
 echo "Starting changelog generation script..."
 git config --global --add safe.directory /github/workspace
@@ -32,6 +28,12 @@ echo "" >> $CHANGELOG_FILE
 
 # Go to the repository directory
 cd $REPO_DIR
+
+# Get repository url
+GITHUB_REPO_URL=$(git remote get-url origin 2>/dev/null | sed 's/\.git$//')
+if [ -z "$GITHUB_REPO_URL" ]; then
+    GITHUB_REPO_URL=0
+fi
 
 # Fetch the latest changes
 git fetch --tags
