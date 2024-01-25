@@ -62,7 +62,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Generate Changelog
-      uses: smichard/conventional_changelog@1.0.3
+      uses: smichard/conventional_changelog@1.0.4
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
