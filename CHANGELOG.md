@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 2.0.4 (2024-01-27)
+
+### Documentation
+- :robot: changelog file generated [`977b843`](https://github.com/smichard/conventional_changelog/commit/977b843)
+
+### Chore
+- update quay.io/michard/tekton_base_image docker tag to v0.1.13 [`be53ac4`](https://github.com/smichard/conventional_changelog/commit/be53ac4)
+
 ## 2.0.3 (2024-01-27)
 
 ### Continuous Integration
