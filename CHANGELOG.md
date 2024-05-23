@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 2.0.5 (2024-05-22)
+
+### Continuous Integration
+- :robot: merge pull request #15 from smichard/renovate/quay.io-michard-tekton_base_image-0.x [`622fcc1`](https://github.com/smichard/conventional_changelog/commit/622fcc1)
+- :robot: merge pull request #16 from smichard/renovate/smichard-conventional_changelog-2.x [`a72c025`](https://github.com/smichard/conventional_changelog/commit/a72c025)
+
+### Documentation
+- :robot: changelog file generated [`21999e6`](https://github.com/smichard/conventional_changelog/commit/21999e6)
+
+### Chore
+- update alpine docker tag to v3.20.0 [`8544d93`](https://github.com/smichard/conventional_changelog/commit/8544d93)
+- update quay.io/michard/devspaces_base_image docker tag to v0.1.16 [`9e915da`](https://github.com/smichard/conventional_changelog/commit/9e915da)
+- update quay.io/michard/devspaces_base_image docker tag to v0.1.9 [`a36076a`](https://github.com/smichard/conventional_changelog/commit/a36076a)
+- update quay.io/michard/devspaces_base_image docker tag to v0.1.5 [`448aeb4`](https://github.com/smichard/conventional_changelog/commit/448aeb4)
+- update smichard/conventional_changelog action to v2.0.4 [`a2f5e68`](https://github.com/smichard/conventional_changelog/commit/a2f5e68)
+
+### Other
+- Merge pull request #19 from smichard/renovate/quay.io-michard-devspaces_base_image-0.x [`bee6af1`](https://github.com/smichard/conventional_changelog/commit/bee6af1)
+- Merge pull request #18 from smichard/renovate/quay.io-michard-devspaces_base_image-0.x [`11a95e5`](https://github.com/smichard/conventional_changelog/commit/11a95e5)
+- Merge pull request #17 from smichard/renovate/quay.io-michard-devspaces_base_image-0.x [`c72ee09`](https://github.com/smichard/conventional_changelog/commit/c72ee09)
+
 ## 2.0.4 (2024-01-27)
 
 ### Documentation
