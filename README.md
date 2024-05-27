@@ -75,7 +75,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Generate Changelog
-      uses: smichard/conventional_changelog@1.0.2
+      uses: smichard/conventional_changelog@2.0.0
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -117,7 +117,7 @@ Conventional Changelog extends its versatility by offering seamless integration 
 		- name: fetch-repository
 		  taskRef:
 			name: git-clone
-			kind: ClusterTask
+			kind: Task
 		  workspaces:
 			- name: output
 			  workspace: source
