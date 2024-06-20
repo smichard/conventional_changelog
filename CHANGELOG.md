@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 2.0.6 (2024-06-20)
+
+### Documentation
+- :memo: ReadMe updated [`135c0dd`](https://github.com/smichard/conventional_changelog/commit/135c0dd)
+- :robot: changelog file generated [`29708ff`](https://github.com/smichard/conventional_changelog/commit/29708ff)
+
+### Chore
+- update alpine docker tag to v3.20.1 [`b055672`](https://github.com/smichard/conventional_changelog/commit/b055672)
+- update anothrnick/github-tag-action action to v1.69.0 [`86c8f70`](https://github.com/smichard/conventional_changelog/commit/86c8f70)
+- update smichard/conventional_changelog action to v2.0.5 [`ba52d8e`](https://github.com/smichard/conventional_changelog/commit/ba52d8e)
+- update quay.io/michard/tekton_base_image docker tag to v0.1.14 [`c820e3c`](https://github.com/smichard/conventional_changelog/commit/c820e3c)
+- update quay.io/michard/devspaces_base_image docker tag to v0.1.20 [`f7dc8b9`](https://github.com/smichard/conventional_changelog/commit/f7dc8b9)
+
+### Other
+- Merge pull request #20 from smichard/renovate/quay.io-michard-devspaces_base_image-0.x [`345dfb4`](https://github.com/smichard/conventional_changelog/commit/345dfb4)
+- Merge pull request #21 from smichard/renovate/anothrnick-github-tag-action-1.x [`2402571`](https://github.com/smichard/conventional_changelog/commit/2402571)
+- Merge pull request #22 from smichard/renovate/quay.io-michard-tekton_base_image-0.x [`46a4127`](https://github.com/smichard/conventional_changelog/commit/46a4127)
+- Merge pull request #23 from smichard/renovate/alpine-3.x [`6b9f75f`](https://github.com/smichard/conventional_changelog/commit/6b9f75f)
+- Merge pull request #24 from smichard/renovate/smichard-conventional_changelog-2.x [`d19401b`](https://github.com/smichard/conventional_changelog/commit/d19401b)
+
 ## 2.0.5 (2024-05-22)
 
 ### Continuous Integration
