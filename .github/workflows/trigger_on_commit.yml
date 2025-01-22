@@ -28,32 +28,8 @@ jobs:
         DEFAULT_BRANCH: main
         WITH_V: false
 
-  trigger_tekton_webhook:
-    needs: bump_tag
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Tekton Webhook      
-        run: |
-          curl -X POST -H "Content-Type: application/json" -d '{
-            "ref": "${{ github.ref }}",
-            "repository": {
-              "git_url": "https://github.com/${{ github.repository }}.git",
-              "url": "https://github.com/${{ github.repository }}",
-              "name": "${{ github.repository }}"
-            },
-            "pusher": {
-              "name": "${{ github.actor }}"
-            },
-            "head_commit": {
-              "id": "${{ github.sha }}",
-              "message": "${{ github.event.head_commit.message }}",
-              "timestamp": "${{ github.event.head_commit.timestamp }}",
-              "url": "https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
-            }
-          }' ${{ secrets.TEKTON_WEBHOOK }}
-
   changelog:
-    needs: trigger_tekton_webhook
+    needs: bump_tag
     runs-on: ubuntu-latest
     name: Generate and Commit Changelog
 
