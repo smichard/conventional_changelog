@@ -19,7 +19,7 @@ spec:
       description: ID of the current build
   steps:
     - name: get-buildtag
-      image: quay.io/michard/tekton_base_image:0.1.14
+      image: quay.io/michard/tekton_base_image:0.1.21
       script: |
         #!/bin/sh
         cd /workspace/source
