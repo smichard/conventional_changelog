@@ -55,8 +55,37 @@ jobs:
         git commit -m "docs: :robot: changelog file generated" || echo "No changes to commit"
         git push
 
-  notification:
+  build_and_push:
     needs: changelog
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Log in to target registry
+      run: |
+        echo ${{ secrets.TARGET_REGISTRY_PASSWORD }} | docker login quay.io -u ${{ secrets.TARGET_REGISTRY_USERNAME }} --password-stdin
+
+    - name: Get tag from bumped version
+      id: tag
+      run: |
+        # Fetch the latest changes
+        git fetch --tags
+        TAG=$(git describe --tags --abbrev=0 || echo "latest")
+        echo "TAG=$TAG" >> $GITHUB_ENV
+        echo "Current build tag:"
+        echo $TAG
+
+    - name: Build the container image
+      run: |
+        docker build -f Dockerfile -t quay.io/michard/conventional_changelog:${{ env.TAG }} .
+
+    - name: Push the container image to the target registry
+      run: |
+        docker push quay.io/michard/conventional_changelog:${{ env.TAG }}
+
+  notification:
+    needs: build_and_push
     runs-on: ubuntu-latest
     steps:
       - name: notification
