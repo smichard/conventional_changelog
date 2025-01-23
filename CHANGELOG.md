@@ -4,6 +4,43 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 2.0.9 (2025-01-23)
+
+### Test
+- :truck: test [`8808dab`](https://github.com/smichard/conventional_changelog/commit/8808dab)
+
+### Build
+- :rocket: github workflow adjusted to use github as build platform [`fe558dc`](https://github.com/smichard/conventional_changelog/commit/fe558dc)
+- :rocket: workflow adjusted to new build setup [`8f543d2`](https://github.com/smichard/conventional_changelog/commit/8f543d2)
+- :rocket: adjusted to new build setup [`d628b43`](https://github.com/smichard/conventional_changelog/commit/d628b43)
+
+### Chore
+- update quay.io/michard/tekton_base_image docker tag to v0.1.21 [`a90eedb`](https://github.com/smichard/conventional_changelog/commit/a90eedb)
+
+### Other
+- Merge pull request #25 from smichard/renovate/quay.io-michard-tekton_base_image-0.x [`309c449`](https://github.com/smichard/conventional_changelog/commit/309c449)
+
+## 2.0.8 (2025-01-22)
+
+### Chore
+- update alpine docker tag to v3.21.2 [`cb85d65`](https://github.com/smichard/conventional_changelog/commit/cb85d65)
+
+## 2.0.7 (2025-01-22)
+
+### Documentation
+- :robot: changelog file generated [`8363a11`](https://github.com/smichard/conventional_changelog/commit/8363a11)
+
+### Chore
+- update dependency ubuntu to v24 [`c5f69d5`](https://github.com/smichard/conventional_changelog/commit/c5f69d5)
+- update anothrnick/github-tag-action action to v1.71.0 [`ce976e8`](https://github.com/smichard/conventional_changelog/commit/ce976e8)
+- update smichard/conventional_changelog action to v2.0.6 [`1cedf6d`](https://github.com/smichard/conventional_changelog/commit/1cedf6d)
+
+### Other
+- Merge pull request #26 from smichard/renovate/alpine-3.x [`de44c78`](https://github.com/smichard/conventional_changelog/commit/de44c78)
+- Merge pull request #27 from smichard/renovate/smichard-conventional_changelog-2.x [`9793052`](https://github.com/smichard/conventional_changelog/commit/9793052)
+- Merge pull request #29 from smichard/renovate/anothrnick-github-tag-action-1.x [`a9206b1`](https://github.com/smichard/conventional_changelog/commit/a9206b1)
+- Merge pull request #30 from smichard/renovate/ubuntu-24.x [`dcf974c`](https://github.com/smichard/conventional_changelog/commit/dcf974c)
+
 ## 2.0.6 (2024-06-20)
 
 ### Documentation
