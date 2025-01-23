@@ -96,7 +96,7 @@ jobs:
           server: ${{ secrets.MATRIX_SERVER }}
           message: |
             "${{ github.repository }}":<br />
-            **new updates pushed to the repository — triggering quay build**<br />
+            **new updates pushed to the repository — new container image build**<br />
             commit message: **${{ github.event.head_commit.message }}** <br />
             contributor: **${{ github.actor }}** <br />
             commit sha: **${{ github.sha }}** <br />
